@@ -1,6 +1,4 @@
-angular.module('capstone', ['ui.router','foundation', 'foundation.common', 'ngAnimate'])
-
-.constant('FIRE_URL', 'https://filifamfotos.firebaseIO.com')
+angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnimate'])
 
 .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.when('', '/');

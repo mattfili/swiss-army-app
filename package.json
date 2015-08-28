@@ -1,7 +1,7 @@
 {
-  "name": "Capstone",
+  "name": "swiss-army-app",
   "version": "1.0.0",
-  "description": "Web application using AngularJS",
+  "description": "Whole lotta APIs",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,9 +13,9 @@
   "author": "matt fili <matthewjosephfili@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mattfili/Fbundler_capstone/issues"
+    "url": "https://github.com/mattfili/swiss-army-app/issues"
   },
-  "homepage": "https://github.com/mattfili/bundler_capstone",
+  "homepage": "https://github.com/mattfili/swiss-army-app",
   "devDependencies": {
     "babel": "^5.8.21",
     "bowcat": "0.0.5",
