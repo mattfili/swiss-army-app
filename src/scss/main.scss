@@ -1,2 +1,27 @@
+$primary: #130B36 !important; 
+$secondary: #2A0C4C !important; 
+$alert: #9E2448 !important; 
+$info: #0C114C !important;
+$success: #77FBD5 !important; 
+$warning: #A93827 !important;
+$dark: #0A1E42 !important; 
+$gray: #dfdfdf !important;
+$gray-dark: darken(#dfdfdf, 8) !important;
+$gray-light: lighten(#dfdfdf, 8) !important;
+$blue-alert: 0A26FF !important;
+$dark-lighten: lighten(#0A1E42, 8) !important;
+
 @import "settings";
 @import "foundation";
+@import "animations";
+@import "search";
+@import "colors";
+@import "search";
+
+.grid-block {
+	overflow: visible !important;
+}
+
+.grid-content {
+	overflow: visible !important;
+}

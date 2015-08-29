@@ -1,2 +1,24 @@
-.row
-	ui-view(name='bDash')
+.grid-block.shrink
+	.grid-content
+		label
+			input(type="search" placeholder="Alpha Centauri" ng-model="Ctrl.query" ng-change="Ctrl.queryChanged()" ng-class='')
+			.results
+				section.block-list
+				ul
+					li(ng-repeat="cities in Ctrl.cities" ng-animate).toggle 
+						a(ui-sref='start.engage({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})') {{cities.formatted_address}}
+	.grid-content
+		.button-group
+			button.dark(type="button" ng-model="Ctrl.check.weather" btn-checkbox) 
+				i.fi-cloud.size-72
+			button.dark(type="button" ng-model="Ctrl.check.news" btn-checkbox) 
+				i.fi-social-hacker-news.size-72
+			button.dark(type="button" ng-model="Ctrl.check.toDo" btn-checkbox) 
+				i.fi-checkbox.size-72
+
+.grid-block(ng-if="Ctrl.check.weather").slide-left.align-center
+	ui-view(name='weather')
+.grid-block(ng-if="Ctrl.check.news").slide-left.align-center
+	ui-view(name='news')
+.grid-block(ng-if="Ctrl.check.toDo").slide-left.align-center
+	ui-view(name='toDo' ng-if="Ctrl.check.toDo")

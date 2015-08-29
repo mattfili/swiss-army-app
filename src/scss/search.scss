@@ -1,0 +1,39 @@
+label {
+
+	input {
+		background-color: $dark;
+		opacity: .6;
+		margin-bottom: 0 !important;
+		padding-top: 10px;
+		height: inherit;
+		color: $blue-alert;
+		font-size: 32px;
+		font-weight: light;
+		border-color: $dark;
+		padding: 25px 8px !important;
+	}
+
+	ul {
+	margin-left: 5px;
+
+		li {
+			list-style: none;
+		}
+
+	}
+}
+
+button {
+	padding: 10px 35px;
+	margin: 0px 4px;
+	background-color: $dark;
+
+	&.active {
+	background-color: #2A0C4C !important;
+	}
+}
+
+i {
+	font-size: 40px;
+	font-weight: light;
+}

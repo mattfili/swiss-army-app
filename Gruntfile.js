@@ -44,16 +44,17 @@ module.exports = function(grunt) {
     bower_concat: {
       main: {
         dest: 'public/lib/build.js',
-        cssDest: 'public/lib/build.css'
+        cssDest: 'public/lib/build.css',
+        exclude: 'animated-climacons'
       }
     },
     clean: ['public'],
     connect: {
       main: {
         options: {
-          port: randomPort,
+          port: 8080,
           base: 'public/',
-          open: true,
+          open: false,
           livereload: true
         }
       }
@@ -66,12 +67,27 @@ module.exports = function(grunt) {
             cwd: 'src/',
             src: [
               '**',
+              '**/*.png',
               '!**/*.jade',
               '!**/*.scss',
               '!**/*.css',
               '!**/*.js',
             ],
             dest: 'public/',
+            filter: 'isFile'
+          }
+        ]
+      },
+      dep: {
+        files: [
+          {
+            expand: true,
+            cwd: 'bower_components/',
+            src: [
+              'foundation-icons/**/*',
+              'animated-climacons/css/animated-climacons.css'
+            ],
+            dest: 'public/lib',
             filter: 'isFile'
           }
         ]
@@ -167,7 +183,7 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['src/**/*.scss'],
-        tasks: ['sass:dev', 'autoprefixer']
+        tasks: ['sass:dev', 'autoprefixer', 'bower_concat']
       },
       js: {
         files: ['src/js/**/*.js'],
@@ -191,6 +207,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build-dev', [
     'clean',
     'copy',
+    'copy:dep',
     'sass:dev',
     'babel:dev',
     'bower_concat',

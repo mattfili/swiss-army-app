@@ -41,13 +41,13 @@ $body-font-style: normal !default;
 $body-antialiased: true;
 
 // Application Colors
-$primary-color: #00558b !default;
-$secondary-color: #f1f1f1 !default;
-$alert-color: #F04124 !default;
-$info-color: #A0D3E8 !default;
-$success-color: #43AC6A !default;
-$warning-color: #F08A24 !default;
-$dark-color: #232323 !default;
+$primary-color: #130B36 !default; 
+$secondary-color: #2A0C4C !default; 
+$alert-color: #9E2448 !default; 
+$info-color: #0C114C !default;
+$success-color: #77FBD5 !default; 
+$warning-color: #A93827 !default;
+$dark-color: #0A1E42 !default; 
 $gray: #dfdfdf !default;
 $gray-dark: darken($gray, 8) !default;
 $gray-light: lighten($gray, 8) !default;
@@ -64,10 +64,13 @@ $global-spacing: rem-calc(15) !default;
 // For internal use: a color map
 $foundation-colors: (
   primary: $primary-color,
+  secondary: $secondary-color,
   success: $success-color,
   warning: $warning-color,
   alert: $alert-color,
   dark: $dark-color,
+  dark-gray: $gray-dark,
+  light-gray: $gray-light,
 );
 
 @include exports(global) {

@@ -1,4 +1,30 @@
 
-<div class="row">
-  <ui-view name="bDash"></ui-view>
+<div class="grid-block shrink">
+  <div class="grid-content">
+    <label>
+      <input type="search" placeholder="Alpha Centauri" ng-model="Ctrl.query" ng-change="Ctrl.queryChanged()" ng-class=""/>
+      <div class="results">
+        <section class="block-list"></section>
+        <ul>
+          <li ng-repeat="cities in Ctrl.cities" ng-animate="ng-animate" class="toggle"> <a ui-sref="start.engage({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})">{{cities.formatted_address}}</a></li>
+        </ul>
+      </div>
+    </label>
+  </div>
+  <div class="grid-content">
+    <div class="button-group">
+      <button type="button" ng-model="Ctrl.check.weather" btn-checkbox="btn-checkbox" class="dark"> <i class="fi-cloud size-72"></i></button>
+      <button type="button" ng-model="Ctrl.check.news" btn-checkbox="btn-checkbox" class="dark"> <i class="fi-social-hacker-news size-72"></i></button>
+      <button type="button" ng-model="Ctrl.check.toDo" btn-checkbox="btn-checkbox" class="dark"> <i class="fi-checkbox size-72"></i></button>
+    </div>
+  </div>
+</div>
+<div ng-if="Ctrl.check.weather" class="grid-block slide-left align-center">
+  <ui-view name="weather"></ui-view>
+</div>
+<div ng-if="Ctrl.check.news" class="grid-block slide-left align-center">
+  <ui-view name="news"></ui-view>
+</div>
+<div ng-if="Ctrl.check.toDo" class="grid-block slide-left align-center">
+  <ui-view name="toDo" ng-if="Ctrl.check.toDo"></ui-view>
 </div>

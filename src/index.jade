@@ -5,12 +5,17 @@ html(lang='en-US' ng-app="swiss")
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title Bundler
     link(rel='stylesheet', href='lib/build.css')
+    link(rel="stylesheet", href="lib/foundation-icons/foundation-icons.css")
+    link(rel="stylesheet", href="lib/animated-climacons/css/animated-climacons.css")
     link(rel='stylesheet', href='css/main.css')
   body
-    ui-view
+    .grid-frame
+      ui-view.vertical.grid-block
 
   script(src='lib/build.js')
   script(src='js/main.config.js')
-  script(src='js/bDash.controller.js')
+  script(src='js/main.controller.js')
+  script(src='js/services.js')
+  script(src='js/factory.js')
 
 

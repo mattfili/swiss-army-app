@@ -1,7 +1,10 @@
-angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnimate'])
+angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnimate', 'mm.foundation'])
+
+.constant('GEOCODE', 'https://maps.googleapis.com/maps/api/geocode/json')
+
 
 .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-	$urlRouterProvider.when('', '/');
+	$urlRouterProvider.when('', '/landing');
 	$urlRouterProvider.otherwise('/landing');
 
 	$locationProvider.html5Mode({
@@ -11,16 +14,29 @@ angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnima
 
 	$stateProvider
 	.state('start', {
-	    abstract: true,
-	    templateUrl: 'assets/landing.html',
-  	})
-	.state('start.dash', {
 		url: '/landing',
+	    templateUrl: 'assets/landing.html',
+	   	controller: 'mainController',
+	    controllerAs: 'Ctrl'
+  	})
+
+	.state('start.engage', {
+		url: '/:city/:lat/:long',
 	    views: {
-	      'bDash': {
-	        templateUrl: 'assets/bDash.html',
-	        controller: 'bDashController',
-	        controllerAs: 'bCtrl'
+	      'weather': {
+	        templateUrl: 'assets/weather.html',
+	        controller: 'weatherController',
+	        controllerAs: 'wCtrl'
+	      },
+	      'news': {
+	        templateUrl: 'assets/news.html',
+	        controller: 'newsController',
+	        controllerAs: 'nCtrl'
+	      },
+	      'toDo': {
+	        templateUrl: 'assets/news.html',
+	        controller: 'todoController',
+	        controllerAs: 'tdCtrl'
 	      }
 	    }
 	})
