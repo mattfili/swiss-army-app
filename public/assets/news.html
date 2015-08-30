@@ -1,4 +1,32 @@
 
-<div class="grid-content">
-  <h1>ho</h1>
+<div class="align-spaced grid-block">
+  <masonry load-image="false" class="grid-content">
+    <div ng-repeat="topNews in nCtrl.hackerNews.news" class="masonry-brick">
+      <div class="custom-card">
+        <div class="custom-card-divider"><i class="fi-social-hacker-news"></i><a href="{{topNews.url}}" class="link">{{topNews.title}}</a></div>
+        <div class="custom-card-section">
+          <div class="score">{{topNews.score}}</div>
+          <div class="date">{{topNews.time | Time}}</div>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="topAsk in nCtrl.hackerNews.ask" class="masonry-brick">
+      <div class="custom-card">
+        <div class="custom-card-divider"><i class="fi-social-hacker-news"></i><a href="{{topAsk.url}}" class="link">{{topAsk.title}}</a></div>
+        <div class="custom-card-section">
+          <div class="date">Release: {{topAsk.time | Time}}</div>
+          <div class="score">Score: {{topAsk.score}}</div>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="topShow in nCtrl.hackerNews.show" class="masonry-brick">
+      <div class="custom-card">
+        <div class="custom-card-divider"><i class="fi-social-hacker-news"></i><a href="{{topShow.url}}" class="link">{{topShow.title}}</a></div>
+        <div class="custom-card-section">
+          <div class="score">{{topShow.score}}</div>
+          <div class="date">{{topShow.time | Time}}</div>
+        </div>
+      </div>
+    </div>
+  </masonry>
 </div>

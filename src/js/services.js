@@ -32,12 +32,33 @@ angular.module('swiss')
 
 .factory('LocalStorage', function () {
 	return {
-		storeScale: function(data) {
-			localStorage.scale = data
+		storeProfile: function(data) {
+			localStorage.profile = data
 		},
 		storePrecision: function(data) {
 			localStorage.precision = data
 		}
 
 	}
+})
+
+.service('paperBoy', function() {
+	this.hackerNews = {
+		news: [],
+		ask: [],
+		show: []
+	}
+
+	this.dataPush = function (news) {
+		this.hackerNews.news.push(news);
+	}
+
+	this.askPush = function (ask) {
+		this.hackerNews.ask.push(ask)
+	}
+
+	this.showPush = function (show) {
+		this.hackerNews.show.push(show)
+	}
+
 })

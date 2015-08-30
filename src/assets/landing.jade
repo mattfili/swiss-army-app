@@ -9,16 +9,17 @@
 						a(ui-sref='start.engage({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})') {{cities.formatted_address}}
 	.grid-content
 		.button-group
-			button.dark(type="button" ng-model="Ctrl.check.weather" btn-checkbox) 
-				i.fi-cloud.size-72
-			button.dark(type="button" ng-model="Ctrl.check.news" btn-checkbox) 
-				i.fi-social-hacker-news.size-72
-			button.dark(type="button" ng-model="Ctrl.check.toDo" btn-checkbox) 
-				i.fi-checkbox.size-72
+			button.dark(type="button" ng-click="Ctrl.auth.$authWithOAuthPopup('github')" ng-show="!Ctrl.profile") 
+				i.fi-social-github
+			button.dark(type="button" ng-click="Ctrl.auth.$unauth()" ng-show="Ctrl.profile") Logout 
+			div(ng-if="Ctrl.profile")
+				button.dark(type="button" ng-model="Ctrl.check.weather" btn-checkbox).slide-left
+					i.fi-cloud
+				button.dark(type="button" ng-model="Ctrl.check.news" btn-checkbox).slide-left
+					i.fi-social-hacker-news
+				button.dark(type="button" ng-model="Ctrl.check.toDo" btn-checkbox).slide-left
+					i.fi-checkbox
 
-.grid-block(ng-if="Ctrl.check.weather").slide-left.align-center
-	ui-view(name='weather')
-.grid-block(ng-if="Ctrl.check.news").slide-left.align-center
-	ui-view(name='news')
-.grid-block(ng-if="Ctrl.check.toDo").slide-left.align-center
-	ui-view(name='toDo' ng-if="Ctrl.check.toDo")
+ui-view(name='weather' ng-if="Ctrl.check.weather")
+ui-view(name='news' ng-if="Ctrl.check.news")
+ui-view(name='toDo' ng-if="Ctrl.check.toDo")

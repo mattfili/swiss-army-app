@@ -7277,7 +7277,11 @@ th.hide-for-touch {
     -webkit-transform: perspective(300px) rotateY(0deg);
     opacity: 1; }
 
+input {
+  margin-top: 15px; }
+
 label input {
+  margin-top: 10px;
   background-color: #0A1E42 !important;
   opacity: .6;
   margin-bottom: 0 !important;
@@ -7309,7 +7313,11 @@ i {
   background: url("../images/space1.png") no-repeat center center fixed;
   background-size: cover; }
 
+input {
+  margin-top: 15px; }
+
 label input {
+  margin-top: 10px;
   background-color: #0A1E42 !important;
   opacity: .6;
   margin-bottom: 0 !important;
@@ -7337,8 +7345,60 @@ i {
   font-size: 40px;
   font-weight: light; }
 
-.grid-block {
-  overflow: visible !important; }
-
-.grid-content {
-  overflow: visible !important; }
+/* $primary: #130B36 !important; 
+$secondary: #2A0C4C !important; 
+$alert: #9E2448 !important; 
+$info: #0C114C !important;
+$success: #77FBD5 !important; 
+$warning: #A93827 !important;
+$dark: #0A1E42 !important; 
+$gray: #dfdfdf !important;
+$gray-dark: darken(#dfdfdf, 8) !important;
+$gray-light: lighten(#dfdfdf, 8) !important;
+$blue-alert: 0A26FF !important;
+$dark-lighten: lighten(#0A1E42, 8) !important;
+*/
+masonry {
+  margin: 30px auto 10px auto;
+  overflow: hidden; }
+  masonry .masonry-brick {
+    margin: 5px; }
+    masonry .masonry-brick .custom-card {
+      background-color: #3B4049;
+      border: 0;
+      min-width: 180px;
+      max-width: 250px;
+      height: auto; }
+      masonry .masonry-brick .custom-card .custom-card-divider {
+        display: inline-block;
+        background-color: #3B4049;
+        padding: .5px;
+        line-height: 14px;
+        width: 100%;
+        text-align: left; }
+        masonry .masonry-brick .custom-card .custom-card-divider i {
+          display: inline !important;
+          font-size: 24px;
+          margin: 2px 5px 5px 5px;
+          float: right; }
+        masonry .masonry-brick .custom-card .custom-card-divider a {
+          display: inline;
+          margin: 4px 2px 0px 5px;
+          color: #00C1E5;
+          font-size: 10px;
+          float: left;
+          max-width: 140px; }
+      masonry .masonry-brick .custom-card .custom-card-section {
+        font-size: 10px;
+        color: #A4A6A6;
+        margin-left: 3px;
+        height: 20px !important;
+        margin-top: -1%; }
+        masonry .masonry-brick .custom-card .custom-card-section .score {
+          display: inline;
+          float: right;
+          margin: 3px 3px; }
+        masonry .masonry-brick .custom-card .custom-card-section .date {
+          display: inline;
+          float: left;
+          margin: 3px 3px; }

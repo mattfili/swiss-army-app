@@ -1,9 +1,23 @@
 angular.module('swiss')
 
-.controller('mainController', function($scope, $http, GEOCODE, $timeout) {
+.controller('mainController', function($scope, $http, GEOCODE, $timeout, Auth, $firebaseAuth, LocalStorage, $rootScope, $state) {
 	var vm = this;
 
 	vm.display = true;
+	vm.auth = Auth;
+
+
+	vm.auth.$onAuth(function (authData) {
+		if (authData) {
+			vm.profile = authData;
+			console.log('logged in as' + authData);
+		} else {
+			console.log('logged out');
+			$state.go('start');
+		}
+	})
+
+
 
 	vm.queryChanged = _.debounce(function () {
 		$http
@@ -23,9 +37,13 @@ angular.module('swiss')
 		toDo: false
 	}
 
+	$rootScope.$on('$stateChangeSuccess', function (event, toState) {
+		vm.cities = null;
+	})
+
 })
 
-.controller('weatherController', function($scope, $timeout, Weather, WeatherData) {
+.controller('weatherController', function($scope, $timeout, Weather, WeatherData, currentAuth) {
 	var vm = this;
 
 		_.debounce(function() {
@@ -38,12 +56,15 @@ angular.module('swiss')
 
 })
 
-.controller('newsController', function($scope, $timeout) {
+.controller('newsController', function(Hacker, paperBoy, $scope, $timeout, currentAuth, $sce) {
 	var vm = this;
-
+	Hacker.topNews();
+	Hacker.askStories();
+	Hacker.showStories();
+	vm.hackerNews = paperBoy.hackerNews;
 })
 
-.controller('todoController', function($scope, $timeout) {
+.controller('todoController', function($scope, $timeout, currentAuth) {
 	var vm = this;
 
 })

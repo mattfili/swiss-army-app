@@ -45,7 +45,10 @@ module.exports = function(grunt) {
       main: {
         dest: 'public/lib/build.js',
         cssDest: 'public/lib/build.css',
-        exclude: 'animated-climacons'
+        exclude: 'animated-climacons',
+        dependencies: {
+          'angular-masonry': ['jquery', 'angular',  'angular-ui-router', 'foundation', 'angular-animate', 'firebase', 'jquery-bridget','get-style-property', 'get-size', 'eventie', 'doc-ready', 'eventEmitter', 'matches-selector', 'outlayer', 'imagesloaded']
+        }
       }
     },
     clean: ['public'],

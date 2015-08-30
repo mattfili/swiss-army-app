@@ -1,7 +1,8 @@
-angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnimate', 'mm.foundation'])
+angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnimate', 'mm.foundation', 'firebase', 'wu.masonry'])
 
 .constant('GEOCODE', 'https://maps.googleapis.com/maps/api/geocode/json')
 
+.constant('FIRE_URL', 'https://swa.firebaseio.com/')
 
 .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.when('', '/landing');
@@ -38,6 +39,21 @@ angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnima
 	        controller: 'todoController',
 	        controllerAs: 'tdCtrl'
 	      }
+	    },
+	    resolve: {
+	    	'currentAuth': function (Auth) {
+	    		return Auth.$waitForAuth();
+	    	}
 	    }
 	})
 })
+
+
+.run(function($rootScope, $state) {
+	$rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+  		if (error === "AUTH_REQUIRED") {
+    		$state.go('/landing');
+  		}
+	});
+})
+

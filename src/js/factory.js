@@ -135,3 +135,54 @@ return function(input) {
     console.log(output)
 }
 })
+
+.factory('Hacker', function ($http, paperBoy, $stateParams) {
+  return {
+    topNews: function () {
+      $http
+      .get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
+      .then(function(result) {
+        var idArray = result.data
+        angular.forEach(idArray, function (storyId, i) {
+          if (i > 15) {return}
+          $http.get('https://hacker-news.firebaseio.com/v0/item/' + storyId + '.json?print=pretty')
+            .success(function(story) {
+              paperBoy.dataPush(story)
+            })
+        })
+      })
+    },
+    askStories: function () {
+      $http
+      .get('https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty')
+      .then(function(result) {
+        var idArray = result.data
+        angular.forEach(idArray, function (storyId, i) {
+          if (i > 15) {return}
+          $http.get('https://hacker-news.firebaseio.com/v0/item/' + storyId + '.json?print=pretty')
+            .success(function(ask) {
+              paperBoy.askPush(ask)
+            })
+        })
+      })
+    },
+    showStories: function () {
+      $http
+      .get('https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty')
+      .then(function(result) {
+        var idArray = result.data
+        angular.forEach(idArray, function (storyId, i) {
+          if (i > 15) {return}
+          $http.get('https://hacker-news.firebaseio.com/v0/item/' + storyId + '.json?print=pretty')
+            .success(function(show) {
+              paperBoy.showPush(show)
+            })
+        })
+      })
+    }
+  }
+})
+.factory('Auth', function (FIRE_URL, $firebaseAuth) {
+    var ref = new Firebase(FIRE_URL);
+    return $firebaseAuth(ref);
+})

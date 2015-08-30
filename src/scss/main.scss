@@ -17,11 +17,6 @@ $dark-lighten: lighten(#0A1E42, 8) !important;
 @import "search";
 @import "colors";
 @import "search";
+@import "masonry";
 
-.grid-block {
-	overflow: visible !important;
-}
 
-.grid-content {
-	overflow: visible !important;
-}
