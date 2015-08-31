@@ -46,22 +46,30 @@ angular.module('swiss')
 .controller('weatherController', function($scope, $timeout, Weather, WeatherData, currentAuth) {
 	var vm = this;
 
-		_.debounce(function() {
+	_.debounce(function() {
 		Weather.getWeather()
 		Weather.date()
-		$scope.date = WeatherData.formatdate.toString()
-		$scope.data = WeatherData
+		vm.date = WeatherData.formatdate.toString()
+		vm.data = WeatherData
 	},2000)();
 
 
 })
 
-.controller('newsController', function(Hacker, paperBoy, $scope, $timeout, currentAuth, $sce) {
+.controller('newsController', function(Hacker, paperBoy, $scope, $timeout, currentAuth, $sce, FB, $firebaseObject) {
 	var vm = this;
 	Hacker.topNews();
 	Hacker.askStories();
 	Hacker.showStories();
 	vm.hackerNews = paperBoy.hackerNews;
+
+	vm.isActive = false;
+
+	vm.favorite = function () {
+		FB.$save()
+	}
+
+
 })
 
 .controller('todoController', function($scope, $timeout, currentAuth) {

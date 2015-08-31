@@ -4,6 +4,8 @@ angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnima
 
 .constant('FIRE_URL', 'https://swa.firebaseio.com/')
 
+.constant('WEATHER_URL', 'https://api.forecast.io/forecast/a47fe05b83da643fd561f7e57e4ca650/')
+
 .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.when('', '/landing');
 	$urlRouterProvider.otherwise('/landing');

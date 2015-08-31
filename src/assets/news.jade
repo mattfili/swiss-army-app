@@ -3,8 +3,9 @@
 			.masonry-brick(ng-repeat="topNews in nCtrl.hackerNews.news")
 				.custom-card
 					.custom-card-divider
-						i.fi-social-hacker-news
-						a.link(href="{{topNews.url}}"){{topNews.title}}
+						a#icon(ng-click="nCtrl.favorite()" ng-class="{true: 'visited', false: ''}[isActive]")
+							i.fi-social-hacker-news
+						a#link(href="{{topNews.url}}"){{topNews.title}}
 					.custom-card-section
 						.score{{topNews.score}}
 						.date{{topNews.time | Time}}
@@ -12,8 +13,9 @@
 			.masonry-brick(ng-repeat="topAsk in nCtrl.hackerNews.ask")
 				.custom-card
 					.custom-card-divider
-						i.fi-social-hacker-news
-						a.link(href="{{topAsk.url}}"){{topAsk.title}}
+						a#icon(ng-click="nCtrl.favorite()" ng-class="{true: 'visited', false: ''}[isActive]")
+							i.fi-social-hacker-news
+						a#link(href="{{topAsk.url}}"){{topAsk.title}}
 					.custom-card-section
 						.date Release: {{topAsk.time | Time}}
 						.score Score: {{topAsk.score}}
@@ -22,8 +24,9 @@
 			.masonry-brick(ng-repeat="topShow in nCtrl.hackerNews.show")
 				.custom-card
 					.custom-card-divider
-						i.fi-social-hacker-news
-						a.link(href="{{topShow.url}}"){{topShow.title}}
+						a#icon(ng-click="nCtrl.favorite()" ng-class="{true: 'visited', false: ''}[isActive]")
+							i.fi-social-hacker-news
+						a#link(href="{{topShow.url}}"){{topShow.title}}
 					.custom-card-section
 						.score{{topShow.score}}
 						.date{{topShow.time | Time}}

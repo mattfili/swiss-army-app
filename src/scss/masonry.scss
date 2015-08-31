@@ -16,7 +16,7 @@ $dark-lighten: lighten(#0A1E42, 8) !important;
 
 	masonry {
 		margin: 30px auto 10px auto;
-		overflow: hidden;
+		overflow-x: hidden;
 
 
 
@@ -36,25 +36,30 @@ $dark-lighten: lighten(#0A1E42, 8) !important;
 				padding: .5px;
 				line-height: 14px;
 				width: 100%;
-				text-align: left;
 
+				a#icon {
+				 		i {
+							display: inline !important;
+							float: right !important;
+							font-size: 24px;
+							margin: 2px 5px 5px 5px;
+							color: #000512;
 
-
-				i {
-					display: inline !important;
-					font-size: 24px;
-					margin: 2px 5px 5px 5px;
-					float: right;
+							.visited {
+								color: #00C1E5;
+							}
+						}
 				}
+				
 
-				a {
-					display: inline;
-					margin: 4px 2px 0px 5px;
-					color: #00C1E5;
-					font-size: 10px;
-					float: left;
-					max-width: 140px;
 
+				a + #link { 
+						color: #00C1E5;
+						display: inline;
+						margin: 4px 2px 0px 5px;
+						font-size: 10px;
+						float: left;
+						max-width: 140px;
 				}
 			}
 

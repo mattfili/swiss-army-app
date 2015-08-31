@@ -1,4 +1,22 @@
 
-<div class="grid-content">
-  <h1>hey</h1>
+<div class="align-spaced grid-block">
+  <masonry load-image="false" class="grid-content">
+    <div ng-repeat="data in wCtrl.data.hourly.data | limitTo:15" ng-style="{'background-color': '{{wCtrl.data.color}}' }" class="weather masonry-brick">
+      <div class="custom-card">
+        <div class="custom-card-divider">
+          <div class="icon">
+            <figure><img src="../../lib/animated-climacons/climacons/css/{{data.icon}}" ng-class="data.icon"/></figure>
+          </div>
+        </div>
+        <div class="custom-card-section">
+          <p>{{data.time | Time}}</p>
+          <div class="degrees"> {{data.apparentTemperature | limitTo:2}}</div>
+          <div class="data">
+            <p>{{data.summary}}with a</p>
+            <p>{{data.precipProbability | Percent}} chance of rain</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </masonry>
 </div>

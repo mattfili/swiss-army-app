@@ -1,6 +1,6 @@
 angular.module('swiss')
 
-.factory('Weather', function ( WeatherData, $http, $stateParams) {
+.factory('Weather', function ( WeatherData, $http, $stateParams, WEATHER_URL) {
 return {
 
   date: function() {
@@ -28,7 +28,7 @@ return {
 
   getWeather: function() {
     $http
-      .jsonp('/api/forecast/' + $stateParams.lat + ',' + $stateParams.long + '?callback=JSON_CALLBACK')
+      .jsonp(WEATHER_URL + $stateParams.lat + ',' + $stateParams.long + '?callback=JSON_CALLBACK')
       .success(function (data){
 
         WeatherData.dataPush(data.currently, data.daily, data.hourly) 
@@ -144,7 +144,7 @@ return function(input) {
       .then(function(result) {
         var idArray = result.data
         angular.forEach(idArray, function (storyId, i) {
-          if (i > 15) {return}
+          if (i > 25) {return}
           $http.get('https://hacker-news.firebaseio.com/v0/item/' + storyId + '.json?print=pretty')
             .success(function(story) {
               paperBoy.dataPush(story)
@@ -158,7 +158,7 @@ return function(input) {
       .then(function(result) {
         var idArray = result.data
         angular.forEach(idArray, function (storyId, i) {
-          if (i > 15) {return}
+          if (i > 25) {return}
           $http.get('https://hacker-news.firebaseio.com/v0/item/' + storyId + '.json?print=pretty')
             .success(function(ask) {
               paperBoy.askPush(ask)
@@ -172,7 +172,7 @@ return function(input) {
       .then(function(result) {
         var idArray = result.data
         angular.forEach(idArray, function (storyId, i) {
-          if (i > 15) {return}
+          if (i > 25) {return}
           $http.get('https://hacker-news.firebaseio.com/v0/item/' + storyId + '.json?print=pretty')
             .success(function(show) {
               paperBoy.showPush(show)
@@ -185,4 +185,10 @@ return function(input) {
 .factory('Auth', function (FIRE_URL, $firebaseAuth) {
     var ref = new Firebase(FIRE_URL);
     return $firebaseAuth(ref);
+})
+
+.factory('FB', function (FIRE_URL, $firebaseObject) {
+    var ref = new Firebase(FIRE_URL);
+    var favoriteRef = ref.child('/favorite')
+    return $firebaseObject(favoriteRef);
 })

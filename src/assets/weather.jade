@@ -1,2 +1,16 @@
-.grid-content
-	h1 hey
+.align-spaced.grid-block
+		masonry(load-image="false").grid-content
+			.weather.masonry-brick(ng-repeat='data in wCtrl.data.hourly.data | limitTo:15', ng-style="{'background-color': '{{wCtrl.data.color}}' }")
+				.custom-card
+					.custom-card-divider
+						.icon
+							figure
+								img(src='../../lib/animated-climacons/climacons/css/{{data.icon}}', ng-class='data.icon')
+					.custom-card-section
+						p {{data.time | Time}}
+						.degrees  {{data.apparentTemperature | limitTo:2}}
+						.data
+							p {{data.summary}}with a
+							p {{data.precipProbability | Percent}} chance of rain
+
+

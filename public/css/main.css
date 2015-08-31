@@ -7360,7 +7360,7 @@ $dark-lighten: lighten(#0A1E42, 8) !important;
 */
 masonry {
   margin: 30px auto 10px auto;
-  overflow: hidden; }
+  overflow-x: hidden; }
   masonry .masonry-brick {
     margin: 5px; }
     masonry .masonry-brick .custom-card {
@@ -7374,17 +7374,19 @@ masonry {
         background-color: #3B4049;
         padding: .5px;
         line-height: 14px;
-        width: 100%;
-        text-align: left; }
-        masonry .masonry-brick .custom-card .custom-card-divider i {
+        width: 100%; }
+        masonry .masonry-brick .custom-card .custom-card-divider a#icon i {
           display: inline !important;
+          float: right !important;
           font-size: 24px;
           margin: 2px 5px 5px 5px;
-          float: right; }
-        masonry .masonry-brick .custom-card .custom-card-divider a {
+          color: #000512; }
+          masonry .masonry-brick .custom-card .custom-card-divider a#icon i .visited {
+            color: #00C1E5; }
+        masonry .masonry-brick .custom-card .custom-card-divider a + #link {
+          color: #00C1E5;
           display: inline;
           margin: 4px 2px 0px 5px;
-          color: #00C1E5;
           font-size: 10px;
           float: left;
           max-width: 140px; }
