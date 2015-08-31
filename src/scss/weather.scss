@@ -1,0 +1,59 @@
+@function set-weather-card-color($color) {
+	@if (lightness($color) > 50) {
+		@return #000;
+	} @else {
+		@return #fff;
+	}
+}
+
+.weather-card {
+
+	.weather-card-divider {
+		height: 140px;
+		opacity: .7;
+
+		> p {
+			font-size: 14px;
+			margin-bottom: 0;
+			padding-left: 10px;
+			color: white;
+ 			background: url('../images/space1.png') no-repeat;
+ 			-webkit-background-clip: text;
+  			-webkit-text-fill-color: transparent;
+
+
+  			> .nightText {
+  				 background: none;
+ 				-webkit-background-clip: text;
+  				-webkit-text-fill-color: solid;
+  				color: gray;
+  			}
+
+		}
+
+		> .icon figure img {
+			height: 80px;
+			width: auto;
+			clip-path: url('../images/space1.png') fill-box;
+			color: transparent;
+		}
+		
+
+	}
+
+	.weather-card-section {
+		background-color: $dark;
+		opacity: .6;
+		height: 30px;
+
+	> p {
+		font-size: 15px;
+		margin-bottom: 5px;
+		display: inline;
+		padding: 0 15px;
+		color: gray;
+	}
+
+	}
+
+}

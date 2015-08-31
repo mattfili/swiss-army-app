@@ -65,8 +65,8 @@ angular.module('swiss')
 
 	vm.isActive = false;
 
-	vm.favorite = function () {
-		FB.$save()
+	vm.favorite = function (news) {
+		FB.newFavorite(news);
 	}
 
 

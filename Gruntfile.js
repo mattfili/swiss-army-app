@@ -88,7 +88,7 @@ module.exports = function(grunt) {
             cwd: 'bower_components/',
             src: [
               'foundation-icons/**/*',
-              'animated-climacons/css/animated-climacons.css'
+              'animated-climacons/**/*'
             ],
             dest: 'public/lib',
             filter: 'isFile'

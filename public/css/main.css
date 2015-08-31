@@ -7277,21 +7277,15 @@ th.hide-for-touch {
     -webkit-transform: perspective(300px) rotateY(0deg);
     opacity: 1; }
 
-input {
-  margin-top: 15px; }
-
 label input {
-  margin-top: 10px;
   background-color: #0A1E42 !important;
   opacity: .6;
-  margin-bottom: 0 !important;
-  padding-top: 10px;
+  margin: 18px 0 0 5px !important;
   height: inherit;
-  color: 0A 26FF !important;
   font-size: 32px;
   font-weight: light;
   border-color: #0A1E42 !important;
-  padding: 25px 8px !important; }
+  padding: 18px 8px !important; }
 
 label ul {
   margin-left: 5px; }
@@ -7299,35 +7293,29 @@ label ul {
     list-style: none; }
 
 button {
-  padding: 10px 35px;
-  margin: 0px 4px;
+  padding: 8px 25px;
+  margin-left: 4px;
   background-color: #0A1E42 !important; }
   button.active {
-    background-color: #2A0C4C !important; }
+    background-color: #000512 !important; }
 
 i {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: light; }
 
 .grid-frame {
   background: url("../images/space1.png") no-repeat center center fixed;
   background-size: cover; }
 
-input {
-  margin-top: 15px; }
-
 label input {
-  margin-top: 10px;
   background-color: #0A1E42 !important;
   opacity: .6;
-  margin-bottom: 0 !important;
-  padding-top: 10px;
+  margin: 18px 0 0 5px !important;
   height: inherit;
-  color: 0A 26FF !important;
   font-size: 32px;
   font-weight: light;
   border-color: #0A1E42 !important;
-  padding: 25px 8px !important; }
+  padding: 18px 8px !important; }
 
 label ul {
   margin-left: 5px; }
@@ -7335,29 +7323,16 @@ label ul {
     list-style: none; }
 
 button {
-  padding: 10px 35px;
-  margin: 0px 4px;
+  padding: 8px 25px;
+  margin-left: 4px;
   background-color: #0A1E42 !important; }
   button.active {
-    background-color: #2A0C4C !important; }
+    background-color: #000512 !important; }
 
 i {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: light; }
 
-/* $primary: #130B36 !important; 
-$secondary: #2A0C4C !important; 
-$alert: #9E2448 !important; 
-$info: #0C114C !important;
-$success: #77FBD5 !important; 
-$warning: #A93827 !important;
-$dark: #0A1E42 !important; 
-$gray: #dfdfdf !important;
-$gray-dark: darken(#dfdfdf, 8) !important;
-$gray-light: lighten(#dfdfdf, 8) !important;
-$blue-alert: 0A26FF !important;
-$dark-lighten: lighten(#0A1E42, 8) !important;
-*/
 masonry {
   margin: 30px auto 10px auto;
   overflow-x: hidden; }
@@ -7368,7 +7343,8 @@ masonry {
       border: 0;
       min-width: 180px;
       max-width: 250px;
-      height: auto; }
+      height: auto;
+      opacity: .8; }
       masonry .masonry-brick .custom-card .custom-card-divider {
         display: inline-block;
         background-color: #3B4049;
@@ -7381,7 +7357,7 @@ masonry {
           font-size: 24px;
           margin: 2px 5px 5px 5px;
           color: #000512; }
-          masonry .masonry-brick .custom-card .custom-card-divider a#icon i .visited {
+          masonry .masonry-brick .custom-card .custom-card-divider a#icon i.active {
             color: #00C1E5; }
         masonry .masonry-brick .custom-card .custom-card-divider a + #link {
           color: #00C1E5;
@@ -7404,3 +7380,37 @@ masonry {
           display: inline;
           float: left;
           margin: 3px 3px; }
+
+.weather-card .weather-card-divider {
+  height: 140px;
+  opacity: .7; }
+  .weather-card .weather-card-divider > p {
+    font-size: 14px;
+    margin-bottom: 0;
+    padding-left: 10px;
+    color: white;
+    background: url("../images/space1.png") no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
+    .weather-card .weather-card-divider > p > .nightText {
+      background: none;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: solid;
+      color: gray; }
+  .weather-card .weather-card-divider > .icon figure img {
+    height: 80px;
+    width: auto;
+    -webkit-clip-path: url("../images/space1.png") fill-box;
+            clip-path: url("../images/space1.png") fill-box;
+    color: transparent; }
+
+.weather-card .weather-card-section {
+  background-color: #0A1E42 !important;
+  opacity: .6;
+  height: 30px; }
+  .weather-card .weather-card-section > p {
+    font-size: 15px;
+    margin-bottom: 5px;
+    display: inline;
+    padding: 0 15px;
+    color: gray; }

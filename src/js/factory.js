@@ -43,7 +43,7 @@ return {
             WeatherData.iconPush('sun.svg', i)
 
           } else if (iconFrame[i].icon ==='clear-night') {
-            WeatherData.iconPush('moonPhase.svg', i)
+            WeatherData.iconPush('moon.svg', i)
 
           } else if (iconFrame[i].icon ==='rain' && iconFrame[i].summary==='Rain') {
             WeatherData.iconPush('cloudRain.svg', i)
@@ -85,9 +85,9 @@ return {
           var formattedDate = unUnixDate.getHours();
 
         if (formattedDate >= 0 && formattedDate <=2 || formattedDate === 23) {
-            WeatherData.colorPush('#071826', i);
+            WeatherData.colorPush('#071826', i); 
           } else if (formattedDate >=3 && formattedDate <= 5){
-            WeatherData.colorPush('#071940', i);
+            WeatherData.colorPush('#133778', i);
           } else if (formattedDate === 6 ){
             WeatherData.colorPush('#FA6551', i);
           } else if (formattedDate >= 7 && formattedDate <=11 ){
@@ -99,7 +99,7 @@ return {
           } else if (formattedDate === 19){
             WeatherData.colorPush('#FA6A67', i);
           } else if (formattedDate >= 20 && formattedDate <= 22){
-            WeatherData.colorPush('#133778', i);
+            WeatherData.colorPush('#133778', i); 
           } 
       }
 
@@ -187,8 +187,24 @@ return function(input) {
     return $firebaseAuth(ref);
 })
 
-.factory('FB', function (FIRE_URL, $firebaseObject) {
-    var ref = new Firebase(FIRE_URL);
-    var favoriteRef = ref.child('/favorite')
-    return $firebaseObject(favoriteRef);
-})
+.factory('FB', function (FIRE_URL) {
+  return {
+    newFavorite: function(news) {
+      var ref = new Firebase(FIRE_URL + '/favorite');
+      ref.push().set({
+        id: news.id,
+        author: news.by,
+        time: news.time,
+        title: news.title,
+        url: news.url
+      }, function (err) {
+        if (err) {
+          console.log('Error: '+ err);
+        } else {
+          console.log('Saved')
+        }
+      });
+    }
+  };
+});
+

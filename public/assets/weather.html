@@ -1,20 +1,18 @@
 
 <div class="align-spaced grid-block">
-  <masonry load-image="false" class="grid-content">
-    <div ng-repeat="data in wCtrl.data.hourly.data | limitTo:15" ng-style="{'background-color': '{{wCtrl.data.color}}' }" class="weather masonry-brick">
-      <div class="custom-card">
-        <div class="custom-card-divider">
+  <masonry load-image="false" preserve-order="preserve-order" class="grid-content">
+    <div ng-repeat="data in wCtrl.data.hourly.data | limitTo:24" class="masonry-brick">
+      <div class="weather-card">
+        <div ng-style="{'background-color': '{{data.color}}'}" class="weather-card-divider">
+          <p ng-class="{nightText: data.color === '#071826'}">{{data.summary}} with a</p>
+          <p ng-class="{nightText: data.color === '#071826'}">{{data.precipProbability | Percent}} chance of rain</p>
           <div class="icon">
-            <figure><img src="../../lib/animated-climacons/climacons/css/{{data.icon}}" ng-class="data.icon"/></figure>
+            <figure><img src="../lib/animated-climacons/climacons/src/svg-css/{{data.icon}}" ng-class="data.icon"/></figure>
           </div>
         </div>
-        <div class="custom-card-section">
+        <div class="weather-card-section">
           <p>{{data.time | Time}}</p>
-          <div class="degrees"> {{data.apparentTemperature | limitTo:2}}</div>
-          <div class="data">
-            <p>{{data.summary}}with a</p>
-            <p>{{data.precipProbability | Percent}} chance of rain</p>
-          </div>
+          <p>{{data.apparentTemperature | limitTo:2}} &#8457</p>
         </div>
       </div>
     </div>
