@@ -30,9 +30,14 @@ masonry {
 						margin: 2px 5px 5px 5px;
 						color: #000512;
 
-						&.active {
+						&:active {
 							color: #00C1E5;
 						}
+
+						&:visited {
+							color: #00C1E5;
+						}
+						
 					}
 			}
 			

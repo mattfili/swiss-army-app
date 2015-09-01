@@ -23,11 +23,11 @@ angular.module('swiss')
 		$http
 		.get(GEOCODE, {
 			params: {address: vm.query}
-		})
+		});
 		.success(function(data){
 			vm.cities = data.results
 			vm.display = false;
-		})
+		});
 
 	}, 2000);
 
@@ -35,11 +35,11 @@ angular.module('swiss')
 		weather: false,
 		news: false,
 		toDo: false
-	}
+	};
 
 	$rootScope.$on('$stateChangeSuccess', function (event, toState) {
 		vm.cities = null;
-	})
+	});
 
 })
 

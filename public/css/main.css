@@ -7357,7 +7357,9 @@ masonry {
           font-size: 24px;
           margin: 2px 5px 5px 5px;
           color: #000512; }
-          masonry .masonry-brick .custom-card .custom-card-divider a#icon i.active {
+          masonry .masonry-brick .custom-card .custom-card-divider a#icon i:active {
+            color: #00C1E5; }
+          masonry .masonry-brick .custom-card .custom-card-divider a#icon i:visited {
             color: #00C1E5; }
         masonry .masonry-brick .custom-card .custom-card-divider a + #link {
           color: #00C1E5;
