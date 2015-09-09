@@ -1,23 +1,23 @@
 
 <div class="grid-block shrink">
-  <div class="grid-content">
+  <div ng-if="Ctrl.check.weather &amp;&amp; !Ctrl.check.news" class="grid-content slide-top">
     <label>
       <input type="search" placeholder="Alpha Centauri" ng-model="Ctrl.query" ng-change="Ctrl.queryChanged()" ng-class=""/>
       <div class="results">
         <section class="block-list"></section>
         <ul>
-          <li ng-repeat="cities in Ctrl.cities" ng-animate="ng-animate" class="toggle"> <a ui-sref="start.engage({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})">{{cities.formatted_address}}</a></li>
+          <li ng-repeat="cities in Ctrl.cities" ng-animate="ng-animate" class="toggle"> <a ui-sref="start.weathers({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})">{{cities.formatted_address}}</a></li>
         </ul>
       </div>
     </label>
   </div>
-  <div class="grid-content">
-    <div class="button-group align-top">
+  <div class="grid-content clearfix">
+    <div class="button-group float-right">
       <button type="button" ng-click="Ctrl.auth.$authWithOAuthPopup('github')" ng-show="!Ctrl.profile" class="dark"> <i class="fi-social-github"></i></button>
-      <button type="button" ng-click="Ctrl.auth.$unauth()" ng-show="Ctrl.profile" class="dark">Logout </button>
+      <button type="button" ng-click="Ctrl.auth.$unauth()" ng-show="Ctrl.profile" class="logout">Logout <i class="fi-social-github"></i></button>
       <div ng-if="Ctrl.profile">
         <button type="button" ng-model="Ctrl.check.weather" ngclick="!Ctrl.check.news" btn-checkbox="btn-checkbox" class="dark slide-left"><i class="fi-cloud"></i></button>
-        <button type="button" ng-model="Ctrl.check.news" ngclick="!Ctrl.check.weather" btn-checkbox="btn-checkbox" class="dark slide-left"><i class="fi-social-hacker-news"></i></button>
+        <button type="button" ng-model="Ctrl.check.news" ngclick="!Ctrl.check.weather" ui-sref="start.news" btn-checkbox="btn-checkbox" class="dark slide-left"><i class="fi-social-hacker-news"></i></button>
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@
       <div class="weather-card">
         <div ng-style="{'background-color': '{{data.color}}'}" class="weather-card-divider">
           <p ng-class="{nightText: data.color === '#071826'}">{{data.summary}} with a</p>
-          <p ng-class="{nightText: data.color === '#071826'}">{{data.precipProbability | Percent}} chance of rain</p>
+          <p ng-class="{nightText: data.color === '#071826'}">{{data.precipProbability | Percent | limitTo:2}} chance of rain</p>
           <div class="icon">
             <figure><img src="../lib/animated-climacons/climacons/src/svg-css/{{data.icon}}" ng-class="data.icon"/></figure>
           </div>

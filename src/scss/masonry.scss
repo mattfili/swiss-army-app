@@ -1,7 +1,27 @@
-masonry {
-	margin: 30px auto 10px auto;
-	overflow-x: hidden;
+.tab-container {
+	width: 175px;
+	display: block;
+	margin: 0 auto;
 
+	a {
+		padding: 0 20px;
+
+		.tab {
+			font-size: 12px;
+		}
+
+		&.tabActive {
+			border-bottom: 1px solid #00C1E5;
+		}
+
+	}
+
+}
+
+masonry {
+	width: 100%;
+	margin: 5px auto 10px 50px;
+	overflow-x: hidden;
 
 
 	.masonry-brick {
@@ -78,6 +98,17 @@ masonry {
 		}
 	}
 	
+}
+
+#favorites {
+	a {
+		#icon {
+
+			i {
+				color: #00C1E5 !important;
+			}
+		}
+	}
 }
 
 

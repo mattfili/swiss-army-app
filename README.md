@@ -1,5 +1,5 @@
-# Fili-family-picture-app
+# Swiss Army App
 
-Web application using AngularJS and Foundation
+Application using Angular and Foundation
 
-Official Fili family hub to upload, share, and comment on albums and pictures
+Fooling around with new APIs, this one currently features Hacker News 

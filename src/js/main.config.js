@@ -23,18 +23,29 @@ angular.module('swiss', ['ui.router','foundation', 'foundation.common', 'ngAnima
 	    controllerAs: 'Ctrl'
   	})
 
-	.state('start.engage', {
+  	.state('start.news', {
+		url: '/yComb',
+	    views: {
+	     'news': {
+	        templateUrl: 'assets/news.html',
+	        controller: 'newsController',
+	        controllerAs: 'nCtrl'
+	      }
+	    },
+	    resolve: {
+	    	'currentAuth': function (Auth) {
+	    		return Auth.$waitForAuth();
+	    	}
+	    }
+  	})
+
+	.state('start.weathers', {
 		url: '/:city/:lat/:long',
 	    views: {
 	      'weather': {
 	        templateUrl: 'assets/weather.html',
 	        controller: 'weatherController',
 	        controllerAs: 'wCtrl'
-	      },
-	      'news': {
-	        templateUrl: 'assets/news.html',
-	        controller: 'newsController',
-	        controllerAs: 'nCtrl'
 	      },
 	      'toDo': {
 	        templateUrl: 'assets/news.html',

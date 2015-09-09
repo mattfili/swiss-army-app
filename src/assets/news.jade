@@ -1,32 +1,52 @@
-.align-spaced.grid-block
-		masonry(load-image="false").grid-content
-			.masonry-brick(ng-repeat="topNews in nCtrl.hackerNews.news")
-				.custom-card
-					.custom-card-divider
-						a#icon(ng-click="nCtrl.favorite(topNews)" ng-class="{true: 'visited', false: ''}[isActive]")
-							i.fi-social-hacker-news
-						a#link(href="{{topNews.url}}" target="{{topNews.url}}"){{topNews.title}}
-					.custom-card-section
-						.score Release: {{topNews.score}}
-						.date Score: {{topNews.time | Time}}
-			
-			.masonry-brick(ng-repeat="topAsk in nCtrl.hackerNews.ask")
-				.custom-card
-					.custom-card-divider
-						a#icon(ng-click="nCtrl.favorite(topAsk)" ng-class="{true: 'visited', false: ''}[isActive]")
-							i.fi-social-hacker-news
-						a#link(href="{{topAsk.url}}" target="{{topAsk.url}}"){{topAsk.title}}
-					.custom-card-section
-						.date Release: {{topAsk.time | Time}}
-						.score Score: {{topAsk.score}}
 
-			
-			.masonry-brick(ng-repeat="topShow in nCtrl.hackerNews.show")
-				.custom-card
-					.custom-card-divider
-						a#icon(ng-click="nCtrl.favorite(topShow)" ng-class="{true: 'visited', false: ''}[isActive]")
-							i.fi-social-hacker-news
-						a#link(href="{{topShow.url}}" target="{{topShow.url}}"){{topShow.title}}
-					.custom-card-section
-						.score Release: {{topShow.score}}
-						.date Score: {{topShow.time | Time}}
+.tab-container 
+	a.tab(ng-click="activeTab = 'News'" ng-class="{'tabActive': activeTab === 'News' || !activeTab}") News
+	a.tab(ng-click="activeTab = 'Favorites'; nCtrl.getFavorites()" ng-class="{'tabActive': activeTab === 'Favorites'}") Favorites
+
+.switch-container(ng-switch="activeTab")
+
+	.grid-block#news(ng-switch-default)
+			masonry(load-image="false").grid-content
+				.masonry-brick(ng-repeat="topNews in nCtrl.hackerNews.news")
+					.custom-card
+						.custom-card-divider
+							a#icon(ng-click="nCtrl.favorite(topNews)" ng-class="{true: 'visited', false: ''}[isActive]")
+								i.fi-social-hacker-news
+							a#link(href="{{topNews.url}}" target="{{topNews.url}}"){{topNews.title}}
+						.custom-card-section
+							.score Score: {{topNews.score}}
+							.date {{topNews.time | Time}}
+				
+				.masonry-brick(ng-repeat="topAsk in nCtrl.hackerNews.ask")
+					.custom-card
+						.custom-card-divider
+							a#icon(ng-click="nCtrl.favorite(topAsk)" ng-class="{true: 'visited', false: ''}[isActive]")
+								i.fi-social-hacker-news
+							a#link(href="https://news.ycombinator.com/item?id={{topAsk.id}}" target="https://news.ycombinator.com/item?id={{topAsk.id}}"){{topAsk.title}}
+						.custom-card-section
+							.score Score: {{topAsk.score}}
+							.date {{topAsk.time | Time}}
+
+				
+				.masonry-brick(ng-repeat="topShow in nCtrl.hackerNews.show")
+					.custom-card
+						.custom-card-divider
+							a#icon(ng-click="nCtrl.favorite(topShow)" ng-class="{true: 'visited', false: ''}[isActive]")
+								i.fi-social-hacker-news
+							a#link(href="{{topShow.url}}" target="{{topShow.url}}"){{topShow.title}}
+						.custom-card-section
+							.score Score: {{topShow.score}}
+							.date {{topShow.time | Time}}
+	
+	.grid-block#favorites(ng-switch-when="Favorites")
+			masonry(load-image="false").grid-content
+				.masonry-brick(ng-repeat="(id, favorites) in nCtrl.favorites")
+					.custom-card
+						.custom-card-divider
+							a#icon(ng-click="nCtrl.unfavorite(id)")
+								i.fi-social-hacker-news
+							a#link(href="{{favorites.url}}" target="{{favorites.url}}" ng-if="favorites.url !== '' "){{favorites.title}}
+							a#link(href="https://news.ycombinator.com/item?id={{favorites.id}}" target="https://news.ycombinator.com/item?id={{favorites.id}}" ng-if="favorites.url ==='' "){{favorites.title}}
+						.custom-card-section
+							.score Score: {{favorites.score}}
+							.date {{favorites.time | Time}}

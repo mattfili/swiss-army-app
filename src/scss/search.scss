@@ -9,6 +9,7 @@ label {
 		font-weight: light;
 		border-color: $dark;
 		padding: 18px 8px !important;
+		color: white !important;
 	}
 
 	ul {
@@ -20,6 +21,10 @@ label {
 
 	}
 }
+
+.button-group {
+
+margin-top: 18px;
 
 button {
 	padding: 8px 25px;
@@ -34,4 +39,5 @@ button {
 i {
 	font-size: 20px;
 	font-weight: light;
+}
 }

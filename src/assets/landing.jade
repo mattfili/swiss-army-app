@@ -1,21 +1,23 @@
 .grid-block.shrink
-	.grid-content
+	.grid-content(ng-if="Ctrl.check.weather && !Ctrl.check.news").slide-top
 		label
 			input(type="search" placeholder="Alpha Centauri" ng-model="Ctrl.query" ng-change="Ctrl.queryChanged()" ng-class='')
 			.results
 				section.block-list
 				ul
 					li(ng-repeat="cities in Ctrl.cities" ng-animate).toggle 
-						a(ui-sref='start.engage({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})') {{cities.formatted_address}}
-	.grid-content
-		.button-group.align-top
+						a(ui-sref='start.weathers({city: cities.formatted_address, lat: cities.geometry.location.lat, long: cities.geometry.location.lng})') {{cities.formatted_address}}
+	
+	.grid-content.clearfix
+		.button-group.float-right
 			button.dark(type="button" ng-click="Ctrl.auth.$authWithOAuthPopup('github')" ng-show="!Ctrl.profile") 
 				i.fi-social-github
-			button.dark(type="button" ng-click="Ctrl.auth.$unauth()" ng-show="Ctrl.profile") Logout 
+			button.logout(type="button" ng-click="Ctrl.auth.$unauth()" ng-show="Ctrl.profile") Logout 
+				i.fi-social-github
 			div(ng-if="Ctrl.profile")
 				button.dark(type="button" ng-model="Ctrl.check.weather" ngclick="!Ctrl.check.news" btn-checkbox).slide-left
 					i.fi-cloud
-				button.dark(type="button" ng-model="Ctrl.check.news" ngclick="!Ctrl.check.weather" btn-checkbox).slide-left
+				button.dark(type="button" ng-model="Ctrl.check.news" ngclick="!Ctrl.check.weather" ui-sref="start.news" btn-checkbox).slide-left
 					i.fi-social-hacker-news
 
 ui-view(name='weather' ng-if="Ctrl.check.weather && !Ctrl.check.news")

@@ -7285,23 +7285,25 @@ label input {
   font-size: 32px;
   font-weight: light;
   border-color: #0A1E42 !important;
-  padding: 18px 8px !important; }
+  padding: 18px 8px !important;
+  color: white !important; }
 
 label ul {
   margin-left: 5px; }
   label ul li {
     list-style: none; }
 
-button {
-  padding: 8px 25px;
-  margin-left: 4px;
-  background-color: #0A1E42 !important; }
-  button.active {
-    background-color: #000512 !important; }
-
-i {
-  font-size: 20px;
-  font-weight: light; }
+.button-group {
+  margin-top: 18px; }
+  .button-group button {
+    padding: 8px 25px;
+    margin-left: 4px;
+    background-color: #0A1E42 !important; }
+    .button-group button.active {
+      background-color: #000512 !important; }
+  .button-group i {
+    font-size: 20px;
+    font-weight: light; }
 
 .grid-frame {
   background: url("../images/space1.png") no-repeat center center fixed;
@@ -7315,26 +7317,40 @@ label input {
   font-size: 32px;
   font-weight: light;
   border-color: #0A1E42 !important;
-  padding: 18px 8px !important; }
+  padding: 18px 8px !important;
+  color: white !important; }
 
 label ul {
   margin-left: 5px; }
   label ul li {
     list-style: none; }
 
-button {
-  padding: 8px 25px;
-  margin-left: 4px;
-  background-color: #0A1E42 !important; }
-  button.active {
-    background-color: #000512 !important; }
+.button-group {
+  margin-top: 18px; }
+  .button-group button {
+    padding: 8px 25px;
+    margin-left: 4px;
+    background-color: #0A1E42 !important; }
+    .button-group button.active {
+      background-color: #000512 !important; }
+  .button-group i {
+    font-size: 20px;
+    font-weight: light; }
 
-i {
-  font-size: 20px;
-  font-weight: light; }
+.tab-container {
+  width: 175px;
+  display: block;
+  margin: 0 auto; }
+  .tab-container a {
+    padding: 0 20px; }
+    .tab-container a .tab {
+      font-size: 12px; }
+    .tab-container a.tabActive {
+      border-bottom: 1px solid #00C1E5; }
 
 masonry {
-  margin: 30px auto 10px auto;
+  width: 100%;
+  margin: 5px auto 10px 50px;
   overflow-x: hidden; }
   masonry .masonry-brick {
     margin: 5px; }
@@ -7382,6 +7398,9 @@ masonry {
           display: inline;
           float: left;
           margin: 3px 3px; }
+
+#favorites a #icon i {
+  color: #00C1E5 !important; }
 
 .weather-card .weather-card-divider {
   height: 140px;

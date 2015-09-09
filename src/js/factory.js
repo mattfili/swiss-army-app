@@ -132,7 +132,6 @@ return function(input) {
 return function(input) {
     var output = input * 100
     return output + '%'
-    console.log(output)
 }
 })
 
@@ -196,7 +195,8 @@ return function(input) {
         author: news.by,
         time: news.time,
         title: news.title,
-        url: news.url
+        url: news.url,
+        score: news.score
       }, function (err) {
         if (err) {
           console.log('Error: '+ err);
@@ -204,7 +204,40 @@ return function(input) {
           console.log('Saved')
         }
       });
+    },
+
+    getFavorites: function (cb) {
+      var ref = new Firebase(FIRE_URL + '/favorite')
+      ref.once('value', function (snapshot) {
+        cb(snapshot);
+      }, function (err) {
+        console.log(err);
+      });
+    },
+
+    unfavorite: function (id, cb) {
+      var ref = new Firebase(FIRE_URL + '/favorite/' + id);
+      var postDeleteRef = new Firebase(FIRE_URL + '/favorite');
+
+      var errCB = function (err) {
+        if (err) {
+          console.log('delete failed');
+        } else {
+          console.log('delete success');
+          getUpdate();
+        }
+      }
+
+      ref.remove(errCB);
+
+      var getUpdate = function () {
+        postDeleteRef.once('value', function (newsnap) {
+          cb(newsnap);
+        });
+      }
+
     }
+
   };
 });
 

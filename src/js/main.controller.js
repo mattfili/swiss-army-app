@@ -17,13 +17,11 @@ angular.module('swiss')
 		}
 	})
 
-
-
 	vm.queryChanged = _.debounce(function () {
 		$http
 		.get(GEOCODE, {
 			params: {address: vm.query}
-		});
+		})
 		.success(function(data){
 			vm.cities = data.results
 			vm.display = false;
@@ -63,10 +61,21 @@ angular.module('swiss')
 	Hacker.showStories();
 	vm.hackerNews = paperBoy.hackerNews;
 
-	vm.isActive = false;
+	vm.getFavorites = function () {
+		FB.getFavorites(function(result) {
+			vm.favorites = result.val();
+		});
+	}
 
 	vm.favorite = function (news) {
+		console.log(news)
 		FB.newFavorite(news);
+	}
+
+	vm.unfavorite = function (id) {
+		FB.unfavorite(id, function (result) {
+			vm.favorites = result.val();
+		});
 	}
 
 

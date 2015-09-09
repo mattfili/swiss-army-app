@@ -4,7 +4,7 @@
 				.weather-card
 					.weather-card-divider(ng-style="{'background-color': '{{data.color}}'}")
 						p(ng-class="{nightText: data.color === '#071826'}") {{data.summary}} with a
-						p(ng-class="{nightText: data.color === '#071826'}") {{data.precipProbability | Percent}} chance of rain
+						p(ng-class="{nightText: data.color === '#071826'}") {{data.precipProbability | Percent | limitTo:2}} chance of rain
 						.icon
 							figure
 								img(src='../lib/animated-climacons/climacons/src/svg-css/{{data.icon}}', ng-class='data.icon')

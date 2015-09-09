@@ -1,32 +1,48 @@
 
-<div class="align-spaced grid-block">
-  <masonry load-image="false" class="grid-content">
-    <div ng-repeat="topNews in nCtrl.hackerNews.news" class="masonry-brick">
-      <div class="custom-card">
-        <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.favorite(topNews)" ng-class="{true: 'visited', false: ''}[isActive]"><i class="fi-social-hacker-news"></i></a><a id="link" href="{{topNews.url}}" target="{{topNews.url}}">{{topNews.title}}</a></div>
-        <div class="custom-card-section">
-          <div class="score">Release: {{topNews.score}}</div>
-          <div class="date">Score: {{topNews.time | Time}}</div>
+<div class="tab-container"> <a ng-click="activeTab = 'News'" ng-class="{'tabActive': activeTab === 'News' || !activeTab}" class="tab">News</a><a ng-click="activeTab = 'Favorites'; nCtrl.getFavorites()" ng-class="{'tabActive': activeTab === 'Favorites'}" class="tab">Favorites</a></div>
+<div ng-switch="activeTab" class="switch-container">
+  <div id="news" ng-switch-default="ng-switch-default" class="grid-block">
+    <masonry load-image="false" class="grid-content">
+      <div ng-repeat="topNews in nCtrl.hackerNews.news" class="masonry-brick">
+        <div class="custom-card">
+          <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.favorite(topNews)" ng-class="{true: 'visited', false: ''}[isActive]"><i class="fi-social-hacker-news"></i></a><a id="link" href="{{topNews.url}}" target="{{topNews.url}}">{{topNews.title}}</a></div>
+          <div class="custom-card-section">
+            <div class="score">Score: {{topNews.score}}</div>
+            <div class="date">{{topNews.time | Time}}</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div ng-repeat="topAsk in nCtrl.hackerNews.ask" class="masonry-brick">
-      <div class="custom-card">
-        <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.favorite(topAsk)" ng-class="{true: 'visited', false: ''}[isActive]"><i class="fi-social-hacker-news"></i></a><a id="link" href="{{topAsk.url}}" target="{{topAsk.url}}">{{topAsk.title}}</a></div>
-        <div class="custom-card-section">
-          <div class="date">Release: {{topAsk.time | Time}}</div>
-          <div class="score">Score: {{topAsk.score}}</div>
+      <div ng-repeat="topAsk in nCtrl.hackerNews.ask" class="masonry-brick">
+        <div class="custom-card">
+          <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.favorite(topAsk)" ng-class="{true: 'visited', false: ''}[isActive]"><i class="fi-social-hacker-news"></i></a><a id="link" href="https://news.ycombinator.com/item?id={{topAsk.id}}" target="https://news.ycombinator.com/item?id={{topAsk.id}}">{{topAsk.title}}</a></div>
+          <div class="custom-card-section">
+            <div class="score">Score: {{topAsk.score}}</div>
+            <div class="date">{{topAsk.time | Time}}</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div ng-repeat="topShow in nCtrl.hackerNews.show" class="masonry-brick">
-      <div class="custom-card">
-        <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.favorite(topShow)" ng-class="{true: 'visited', false: ''}[isActive]"><i class="fi-social-hacker-news"></i></a><a id="link" href="{{topShow.url}}" target="{{topShow.url}}">{{topShow.title}}</a></div>
-        <div class="custom-card-section">
-          <div class="score">Release: {{topShow.score}}</div>
-          <div class="date">Score: {{topShow.time | Time}}</div>
+      <div ng-repeat="topShow in nCtrl.hackerNews.show" class="masonry-brick">
+        <div class="custom-card">
+          <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.favorite(topShow)" ng-class="{true: 'visited', false: ''}[isActive]"><i class="fi-social-hacker-news"></i></a><a id="link" href="{{topShow.url}}" target="{{topShow.url}}">{{topShow.title}}</a></div>
+          <div class="custom-card-section">
+            <div class="score">Score: {{topShow.score}}</div>
+            <div class="date">{{topShow.time | Time}}</div>
+          </div>
         </div>
       </div>
-    </div>
-  </masonry>
+    </masonry>
+  </div>
+  <div id="favorites" ng-switch-when="Favorites" class="grid-block">
+    <masonry load-image="false" class="grid-content">
+      <div ng-repeat="(id, favorites) in nCtrl.favorites" class="masonry-brick">
+        <div class="custom-card">
+          <div class="custom-card-divider"><a id="icon" ng-click="nCtrl.unfavorite(id)"><i class="fi-social-hacker-news"></i></a><a id="link" href="{{favorites.url}}" target="{{favorites.url}}" ng-if="favorites.url !== '' ">{{favorites.title}}</a><a id="link" href="https://news.ycombinator.com/item?id={{favorites.id}}" target="https://news.ycombinator.com/item?id={{favorites.id}}" ng-if="favorites.url ==='' ">{{favorites.title}}</a></div>
+          <div class="custom-card-section">
+            <div class="score">Score: {{favorites.score}}</div>
+            <div class="date">{{favorites.time | Time}}</div>
+          </div>
+        </div>
+      </div>
+    </masonry>
+  </div>
 </div>
