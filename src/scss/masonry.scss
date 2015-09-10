@@ -57,6 +57,10 @@ masonry {
 						&:visited {
 							color: #00C1E5;
 						}
+
+						&.clicked {
+							color: #00C1E5;
+						}
 						
 					}
 			}
@@ -101,13 +105,13 @@ masonry {
 }
 
 #favorites {
-	a {
-		#icon {
 
-			i {
-				color: #00C1E5 !important;
-			}
+	a#icon {
+
+		i {
+			color: #00C1E5 !important;
 		}
+		
 	}
 }
 

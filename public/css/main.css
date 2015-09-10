@@ -7377,6 +7377,8 @@ masonry {
             color: #00C1E5; }
           masonry .masonry-brick .custom-card .custom-card-divider a#icon i:visited {
             color: #00C1E5; }
+          masonry .masonry-brick .custom-card .custom-card-divider a#icon i.clicked {
+            color: #00C1E5; }
         masonry .masonry-brick .custom-card .custom-card-divider a + #link {
           color: #00C1E5;
           display: inline;
@@ -7399,7 +7401,7 @@ masonry {
           float: left;
           margin: 3px 3px; }
 
-#favorites a #icon i {
+#favorites a#icon i {
   color: #00C1E5 !important; }
 
 .weather-card .weather-card-divider {

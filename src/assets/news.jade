@@ -10,8 +10,8 @@
 				.masonry-brick(ng-repeat="topNews in nCtrl.hackerNews.news")
 					.custom-card
 						.custom-card-divider
-							a#icon(ng-click="nCtrl.favorite(topNews)" ng-class="{true: 'visited', false: ''}[isActive]")
-								i.fi-social-hacker-news
+							a#icon(ng-click="nCtrl.favorite(topNews); nCtrl.isActive" )
+								i.fi-social-hacker-news(ng-class="{'visited': nCtrl.isActive}")
 							a#link(href="{{topNews.url}}" target="{{topNews.url}}"){{topNews.title}}
 						.custom-card-section
 							.score Score: {{topNews.score}}
@@ -20,8 +20,8 @@
 				.masonry-brick(ng-repeat="topAsk in nCtrl.hackerNews.ask")
 					.custom-card
 						.custom-card-divider
-							a#icon(ng-click="nCtrl.favorite(topAsk)" ng-class="{true: 'visited', false: ''}[isActive]")
-								i.fi-social-hacker-news
+							a#icon(ng-click="nCtrl.favorite(topAsk); nCtrl.isActive")
+								i.fi-social-hacker-news(ng-class="{'visited': nCtrl.isActive}")
 							a#link(href="https://news.ycombinator.com/item?id={{topAsk.id}}" target="https://news.ycombinator.com/item?id={{topAsk.id}}"){{topAsk.title}}
 						.custom-card-section
 							.score Score: {{topAsk.score}}
@@ -31,8 +31,8 @@
 				.masonry-brick(ng-repeat="topShow in nCtrl.hackerNews.show")
 					.custom-card
 						.custom-card-divider
-							a#icon(ng-click="nCtrl.favorite(topShow)" ng-class="{true: 'visited', false: ''}[isActive]")
-								i.fi-social-hacker-news
+							a#icon(ng-click="nCtrl.favorite(topShow); nCtrl.isActive" )
+								i.fi-social-hacker-news(ng-class="{'visited': nCtrl.isActive}")
 							a#link(href="{{topShow.url}}" target="{{topShow.url}}"){{topShow.title}}
 						.custom-card-section
 							.score Score: {{topShow.score}}

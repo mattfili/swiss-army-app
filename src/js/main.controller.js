@@ -15,7 +15,7 @@ angular.module('swiss')
 			console.log('logged out');
 			$state.go('start');
 		}
-	})
+	});
 
 	vm.queryChanged = _.debounce(function () {
 		$http
@@ -68,15 +68,24 @@ angular.module('swiss')
 	}
 
 	vm.favorite = function (news) {
-		console.log(news)
+		console.log(news);
 		FB.newFavorite(news);
-	}
+	};
 
 	vm.unfavorite = function (id) {
 		FB.unfavorite(id, function (result) {
 			vm.favorites = result.val();
 		});
-	}
+	};
+
+	var dateItUp = function () {
+		var dateString = new Date();
+		return dateString.toDateString();
+	};
+
+	vm.newDate = function () {
+		dateItUp();
+	};
 
 
 })
